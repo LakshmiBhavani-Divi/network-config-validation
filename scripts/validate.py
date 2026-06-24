@@ -1,6 +1,6 @@
 import sys
 
-config_file = "configs/router_invalid.cfg"
+config_file = "configs/router_valid.cfg"
 errors = []
 
 with open(config_file) as f:
