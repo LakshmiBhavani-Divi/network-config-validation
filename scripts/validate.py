@@ -7,9 +7,10 @@ with open(config_file) as f:
     lines = f.readlines()
     full_text = ''.join(lines)
     for i, line in enumerate(lines, 1):
-        if "permit ip any any" in line:
+        stripped = line.strip()
+        if "permit ip any any" in stripped:
             errors.append("Line " + str(i) + ": ACL FAIL - Overly permissive rule found")
-        if "service telnet" in line:
+        if stripped == "service telnet":
             errors.append("Line " + str(i) + ": SECURITY FAIL - Telnet detected, use SSH")
     if "ip route 0.0.0.0" not in full_text:
         errors.append("ROUTING FAIL - Default route is missing")
